@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "316024946957",
+    "firebase_url": "https://smart-aquarium-d7b9c-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "smart-aquarium-d7b9c",
+    "storage_bucket": "smart-aquarium-d7b9c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:316024946957:android:a7a72ea82d90e62478f044",
+        "android_client_info": {
+          "package_name": "com.example.app_final"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC0BhbaX2OWi5AlRarPZuKsxJvsBxTqiic"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:316024946957:android:544bc0c539b1311278f044",
+        "android_client_info": {
+          "package_name": "com.example.database_reading"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC0BhbaX2OWi5AlRarPZuKsxJvsBxTqiic"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
