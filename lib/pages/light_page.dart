@@ -21,7 +21,7 @@ class _LightControlPageState extends State<LightControlPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Transform.rotate(angle: 270 * pi / 180, child: MySlider()),
+            Transform.rotate(angle: 270 * pi / 180, child: const MySlider()),
           ],
         ),
       ),
