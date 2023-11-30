@@ -32,6 +32,7 @@ class _MainAppState extends State<MainApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      theme: ThemeData.light(),
       home: Scaffold(
         body: PageView(
           onPageChanged: (index) {

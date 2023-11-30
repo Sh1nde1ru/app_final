@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:interactive_slider/interactive_slider.dart';
+import 'package:sleek_circular_slider/sleek_circular_slider.dart';
 
 class MySlider extends StatefulWidget {
   const MySlider({super.key});
@@ -9,24 +9,33 @@ class MySlider extends StatefulWidget {
 }
 
 class _MySliderState extends State<MySlider> {
-  int lastValue = 0;
-  var sliderController = InteractiveSliderController.new;
   @override
   Widget build(BuildContext context) {
-    return const InteractiveSlider(
-      unfocusedHeight: 50,
-      focusedHeight: 70,
-      unfocusedOpacity: 1,
-      gradient: LinearGradient(colors: [
-        Color.fromARGB(255, 17, 10, 116),
-        Color.fromARGB(255, 255, 121, 4),
-        Color.fromARGB(255, 255, 247, 0),
-      ], begin: Alignment.topLeft, end: Alignment.bottomRight),
-      startIcon: RotatedBox(quarterTurns: 1, child: Icon(Icons.lightbulb)),
-      endIcon: RotatedBox(
-          quarterTurns: 1, child: Icon(Icons.lightbulb_circle_rounded)),
+    return SleekCircularSlider(
+      appearance: CircularSliderAppearance(
+        size: 300,
+        startAngle: 180,
+        angleRange: 180,
+        customWidths: CustomSliderWidths(
+          trackWidth: 50,
+          shadowWidth: 0,
+          progressBarWidth: 50,
+        ),
+        customColors: CustomSliderColors(
+            gradientStartAngle: 180,
+            gradientEndAngle: 360,
+            progressBarColors: [
+              Colors.blue.shade900,
+              Colors.deepOrange,
+              Colors.yellow
+            ]),
+      ),
       min: 0,
       max: 100,
+      initialValue: 0,
+      onChange: (double value) {
+        print(value);
+      },
     );
   }
 }
