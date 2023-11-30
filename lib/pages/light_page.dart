@@ -1,3 +1,6 @@
+import 'dart:math';
+
+import 'package:app_final/Widgets/my_slider.dart';
 import 'package:flutter/material.dart';
 
 class LightControlPage extends StatefulWidget {
@@ -13,6 +16,14 @@ class _LightControlPageState extends State<LightControlPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Light Control"),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Transform.rotate(angle: 270 * pi / 180, child: MySlider()),
+          ],
+        ),
       ),
     );
   }
