@@ -1,18 +1,23 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:sleek_circular_slider/sleek_circular_slider.dart';
+import 'package:app_final/utils/shared_preferences/prefs.dart';
 
 class LightControlPage extends StatefulWidget {
   const LightControlPage({super.key});
-
   @override
   State<LightControlPage> createState() => _LightControlPageState();
 }
 
 class _LightControlPageState extends State<LightControlPage> {
+  late double initValue = 0;
   @override
-  double startValue = 0;
   void initState() {
+    Prefs.ensureInitialized().then((_) {
+      setState(() {
+        initValue = Prefs.startValue!;
+      });
+    });
     super.initState();
   }
 
@@ -49,14 +54,10 @@ class _LightControlPageState extends State<LightControlPage> {
               ),
               min: 0,
               max: 100,
-              initialValue: startValue,
+              initialValue: initValue,
               onChangeEnd: (double value) {
-                DatabaseReference ref =
-                    FirebaseDatabase.instance.ref("LightValue");
-                ref.set(value.round());
-                print(startValue);
                 setState(() {
-                  startValue = value;
+                  storeStartValue(value);
                 });
               },
             )
@@ -64,5 +65,14 @@ class _LightControlPageState extends State<LightControlPage> {
         ),
       ),
     );
+  }
+
+  void storeStartValue(double value) async {
+    DatabaseReference ref = FirebaseDatabase.instance.ref("LightValue");
+
+    setState(() {
+      Prefs.startValue = value;
+      ref.set(value.round());
+    });
   }
 }
