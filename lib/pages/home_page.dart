@@ -195,7 +195,7 @@ class _HomePageState extends State<HomePage> {
                                       ),
                                     ),
                                   ),
-                                  // onSelectedItemChanged: (value) => playSound(),
+                                  onSelectedItemChanged: (value) => playSound(),
                                 ),
                               )
                             ],
@@ -247,7 +247,7 @@ class _HomePageState extends State<HomePage> {
                                       ),
                                     ),
                                   ),
-                                  //onSelectedItemChanged: (value) => playSound(),
+                                  onSelectedItemChanged: (value) => playSound(),
                                 ),
                               ),
                               const SizedBox(
@@ -279,7 +279,7 @@ class _HomePageState extends State<HomePage> {
                                       ),
                                     ),
                                   ),
-                                  // onSelectedItemChanged: (value) => playSound(),
+                                  onSelectedItemChanged: (value) => playSound(),
                                 ),
                               )
                             ],
