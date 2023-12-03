@@ -339,6 +339,6 @@ class _HomePageState extends State<HomePage> {
   }
 
   void playSound() async {
-    AudioPlayer().play(AssetSource('sounds/click_sound.wav'));
+    AudioPlayer().play(AssetSource('sounds/click_sound3.wav'));
   }
 }

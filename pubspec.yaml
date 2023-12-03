@@ -27,3 +27,4 @@ flutter:
     uses-material-design: true
     assets:
         - assets\sounds\click_sound.wav
+        - assets\sounds\click_sound3.wav
