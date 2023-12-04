@@ -28,3 +28,8 @@ flutter:
     assets:
         - assets\sounds\click_sound.wav
         - assets\sounds\click_sound3.wav
+        - assets\images\scaffold_background.jpg
+        - assets\images\splash_logo.png
+        - assets\images\background_2.jpg
+        - assets\images\background_3.jpg
+        - assets\images\background_4.jpg

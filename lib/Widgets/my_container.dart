@@ -21,6 +21,7 @@ class MyContainer extends StatelessWidget {
           width: width,
           decoration: BoxDecoration(
             gradient: gradient,
+            //color: color,
             borderRadius: BorderRadius.circular(12),
             boxShadow: [
               BoxShadow(
