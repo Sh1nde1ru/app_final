@@ -19,6 +19,11 @@ class _HomePageState extends State<HomePage> {
   dynamic outputHum;
   double initValue = 0;
 
+  final timeOnHours = FixedExtentScrollController();
+  final timeOnMinutes = FixedExtentScrollController();
+  final timeOffHours = FixedExtentScrollController();
+  final timeOffMinutes = FixedExtentScrollController();
+
   @override
   void initState() {
     loadData();
@@ -40,6 +45,7 @@ class _HomePageState extends State<HomePage> {
         outputHum = humidity;
       });
     });
+
     super.initState();
   }
 
@@ -57,285 +63,300 @@ class _HomePageState extends State<HomePage> {
         title: const Text('Home page'),
       ),
       backgroundColor: Colors.grey.shade200,
-      body: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
-        Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                MyContainer(
-                  height: 150,
-                  width: 150,
-                  gradient: const LinearGradient(colors: [
-                    Color.fromARGB(255, 255, 121, 4),
-                    Color.fromARGB(241, 255, 247, 0),
-                  ], begin: Alignment.topLeft, end: Alignment.bottomRight),
-                  child: Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Text(
-                          "Teplota:",
-                          style: TextStyle(
-                              fontSize: 30,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white),
-                        ),
-                        Text(
-                          "$temperature°C",
-                          style: const TextStyle(
-                              fontSize: 40, color: Colors.white),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                MyContainer(
-                  height: 150,
-                  width: 150,
-                  gradient: const LinearGradient(colors: [
-                    Color.fromARGB(255, 4, 50, 255),
-                    Color.fromARGB(240, 0, 213, 255),
-                  ], begin: Alignment.topLeft, end: Alignment.bottomRight),
-                  child: Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Text(
-                          "Vlhkost:",
-                          style: TextStyle(
-                              fontSize: 30,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white),
-                        ),
-                        Text(
-                          "$outputHum%",
-                          style: const TextStyle(
-                              fontSize: 40, color: Colors.white),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            Row(
-              children: [
-                GestureDetector(
-                  onTap: () {},
-                  child: MyContainer(
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  MyContainer(
                     height: 150,
                     width: 150,
                     gradient: const LinearGradient(colors: [
-                      Color.fromARGB(255, 26, 239, 26),
-                      Color.fromARGB(255, 142, 233, 31),
+                      Color.fromARGB(255, 255, 121, 4),
+                      Color.fromARGB(241, 255, 247, 0),
                     ], begin: Alignment.topLeft, end: Alignment.bottomRight),
                     child: Center(
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           const Text(
-                            "Zapnutí: ",
+                            "Teplota:",
                             style: TextStyle(
                                 fontSize: 30,
                                 fontWeight: FontWeight.bold,
                                 color: Colors.white),
                           ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              SizedBox(
-                                height: 50,
-                                width: 50,
-                                child: ListWheelScrollView.useDelegate(
-                                  physics: const FixedExtentScrollPhysics(),
-                                  itemExtent: 40,
-                                  childDelegate:
-                                      ListWheelChildLoopingListDelegate(
-                                    children: List<Widget>.generate(
-                                      24,
-                                      (index) => Text(
-                                        '$index',
-                                        style: const TextStyle(
-                                            fontSize: 30,
-                                            fontWeight: FontWeight.bold,
-                                            color: Colors.white),
-                                      ),
-                                    ),
-                                  ),
-                                  onSelectedItemChanged: (value) => playSound(),
-                                ),
-                              ),
-                              const SizedBox(
-                                height: 45,
-                                child: Text(
-                                  ':',
-                                  style: TextStyle(
-                                      fontSize: 30,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.white),
-                                ),
-                              ),
-                              SizedBox(
-                                height: 50,
-                                width: 50,
-                                child: ListWheelScrollView.useDelegate(
-                                  itemExtent: 40,
-                                  physics: const FixedExtentScrollPhysics(),
-                                  childDelegate:
-                                      ListWheelChildLoopingListDelegate(
-                                    children: List<Widget>.generate(
-                                      60,
-                                      (index) => Text(
-                                        '$index',
-                                        style: const TextStyle(
-                                            fontSize: 30,
-                                            fontWeight: FontWeight.bold,
-                                            color: Colors.white),
-                                      ),
-                                    ),
-                                  ),
-                                  // onSelectedItemChanged: (value) => playSound(),
-                                ),
-                              )
-                            ],
-                          )
+                          Text(
+                            "$temperature°C",
+                            style: const TextStyle(
+                                fontSize: 40, color: Colors.white),
+                          ),
                         ],
                       ),
                     ),
                   ),
-                ),
-                GestureDetector(
-                  onTap: () {},
-                  child: MyContainer(
+                  MyContainer(
                     height: 150,
                     width: 150,
                     gradient: const LinearGradient(colors: [
-                      Color.fromARGB(255, 239, 33, 26),
-                      Color.fromARGB(255, 239, 86, 26),
-                    ]),
+                      Color.fromARGB(255, 4, 50, 255),
+                      Color.fromARGB(240, 0, 213, 255),
+                    ], begin: Alignment.topLeft, end: Alignment.bottomRight),
                     child: Center(
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           const Text(
-                            "Vypnutí: ",
+                            "Vlhkost:",
                             style: TextStyle(
                                 fontSize: 30,
                                 fontWeight: FontWeight.bold,
                                 color: Colors.white),
                           ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              SizedBox(
-                                height: 50,
-                                width: 50,
-                                child: ListWheelScrollView.useDelegate(
-                                  physics: const FixedExtentScrollPhysics(),
-                                  itemExtent: 40,
-                                  childDelegate:
-                                      ListWheelChildLoopingListDelegate(
-                                    children: List<Widget>.generate(
-                                      24,
-                                      (index) => Text(
-                                        '$index',
-                                        style: const TextStyle(
-                                            fontSize: 30,
-                                            fontWeight: FontWeight.bold,
-                                            color: Colors.white),
-                                      ),
-                                    ),
-                                  ),
-                                  //onSelectedItemChanged: (value) => playSound(),
-                                ),
-                              ),
-                              const SizedBox(
-                                height: 45,
-                                child: Text(
-                                  ':',
-                                  style: TextStyle(
-                                      fontSize: 30,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.white),
-                                ),
-                              ),
-                              SizedBox(
-                                height: 50,
-                                width: 50,
-                                child: ListWheelScrollView.useDelegate(
-                                  itemExtent: 40,
-                                  physics: const FixedExtentScrollPhysics(),
-                                  childDelegate:
-                                      ListWheelChildLoopingListDelegate(
-                                    children: List<Widget>.generate(
-                                      60,
-                                      (index) => Text(
-                                        '$index',
-                                        style: const TextStyle(
-                                            fontSize: 30,
-                                            fontWeight: FontWeight.bold,
-                                            color: Colors.white),
-                                      ),
-                                    ),
-                                  ),
-                                  // onSelectedItemChanged: (value) => playSound(),
-                                ),
-                              )
-                            ],
-                          )
+                          Text(
+                            "$outputHum%",
+                            style: const TextStyle(
+                                fontSize: 40, color: Colors.white),
+                          ),
                         ],
                       ),
                     ),
                   ),
-                )
-              ],
-            ),
-            const SizedBox(
-              height: 50,
-            ),
-            SleekCircularSlider(
-              initialValue: initValue,
-              appearance: CircularSliderAppearance(
-                size: 300,
-                startAngle: 180,
-                angleRange: 180,
-                customWidths: CustomSliderWidths(
-                  trackWidth: 50,
-                  shadowWidth: 0,
-                  progressBarWidth: 50,
-                ),
-                customColors: CustomSliderColors(
-                    gradientStartAngle: 180,
-                    gradientEndAngle: 360,
-                    progressBarColors: [
-                      Colors.blue.shade900,
-                      Colors.deepOrange,
-                      Colors.yellow
-                    ],
-                    trackColor: Colors.grey.shade500),
+                ],
               ),
-              min: 0,
-              max: 100,
-              onChange: (double value) {
-                setState(() {
-                  storeStartValue(value);
-                });
-              },
-            )
-          ],
-        ),
-      ]),
+              Row(
+                children: [
+                  GestureDetector(
+                    onTap: () {},
+                    child: MyContainer(
+                      height: 150,
+                      width: 150,
+                      gradient: const LinearGradient(colors: [
+                        Color.fromARGB(255, 26, 239, 26),
+                        Color.fromARGB(255, 142, 233, 31),
+                      ], begin: Alignment.topLeft, end: Alignment.bottomRight),
+                      child: Center(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Text(
+                              "Zapnutí: ",
+                              style: TextStyle(
+                                  fontSize: 30,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white),
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                SizedBox(
+                                  height: 50,
+                                  width: 50,
+                                  child: ListWheelScrollView.useDelegate(
+                                    controller: timeOnHours,
+                                    physics: const FixedExtentScrollPhysics(),
+                                    itemExtent: 40,
+                                    childDelegate:
+                                        ListWheelChildLoopingListDelegate(
+                                      children: List<Widget>.generate(
+                                        24,
+                                        (index) => Text(
+                                          '$index',
+                                          style: const TextStyle(
+                                              fontSize: 30,
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.white),
+                                        ),
+                                      ),
+                                    ),
+                                    onSelectedItemChanged: (value) =>
+                                        playSound(),
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 45,
+                                  child: Text(
+                                    ':',
+                                    style: TextStyle(
+                                        fontSize: 30,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white),
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 50,
+                                  width: 50,
+                                  child: ListWheelScrollView.useDelegate(
+                                    controller: timeOnMinutes,
+                                    itemExtent: 40,
+                                    physics: const FixedExtentScrollPhysics(),
+                                    childDelegate:
+                                        ListWheelChildLoopingListDelegate(
+                                      children: List<Widget>.generate(
+                                        60,
+                                        (index) => Text(
+                                          '$index',
+                                          style: const TextStyle(
+                                              fontSize: 30,
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.white),
+                                        ),
+                                      ),
+                                    ),
+                                    onSelectedItemChanged: (value) =>
+                                        playSound(),
+                                  ),
+                                )
+                              ],
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {},
+                    child: MyContainer(
+                      height: 150,
+                      width: 150,
+                      gradient: const LinearGradient(colors: [
+                        Color.fromARGB(255, 239, 33, 26),
+                        Color.fromARGB(255, 239, 86, 26),
+                      ]),
+                      child: Center(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Text(
+                              "Vypnutí: ",
+                              style: TextStyle(
+                                  fontSize: 30,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white),
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                SizedBox(
+                                  height: 50,
+                                  width: 50,
+                                  child: ListWheelScrollView.useDelegate(
+                                    controller: timeOffHours,
+                                    physics: const FixedExtentScrollPhysics(),
+                                    itemExtent: 40,
+                                    childDelegate:
+                                        ListWheelChildLoopingListDelegate(
+                                      children: List<Widget>.generate(
+                                        24,
+                                        (index) => Text(
+                                          '$index',
+                                          style: const TextStyle(
+                                              fontSize: 30,
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.white),
+                                        ),
+                                      ),
+                                    ),
+                                    onSelectedItemChanged: (value) =>
+                                        playSound(),
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 45,
+                                  child: Text(
+                                    ':',
+                                    style: TextStyle(
+                                        fontSize: 30,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white),
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 50,
+                                  width: 50,
+                                  child: ListWheelScrollView.useDelegate(
+                                    controller: timeOffMinutes,
+                                    itemExtent: 40,
+                                    physics: const FixedExtentScrollPhysics(),
+                                    childDelegate:
+                                        ListWheelChildLoopingListDelegate(
+                                      children: List<Widget>.generate(
+                                        60,
+                                        (index) => Text(
+                                          '$index',
+                                          style: const TextStyle(
+                                              fontSize: 30,
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.white),
+                                        ),
+                                      ),
+                                    ),
+                                    onSelectedItemChanged: (value) =>
+                                        playSound(),
+                                  ),
+                                )
+                              ],
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                  )
+                ],
+              ),
+              const SizedBox(
+                height: 50,
+              ),
+              SleekCircularSlider(
+                initialValue: initValue,
+                appearance: CircularSliderAppearance(
+                  size: 300,
+                  startAngle: 180,
+                  angleRange: 180,
+                  customWidths: CustomSliderWidths(
+                    trackWidth: 50,
+                    shadowWidth: 0,
+                    progressBarWidth: 50,
+                  ),
+                  customColors: CustomSliderColors(
+                      gradientStartAngle: 180,
+                      gradientEndAngle: 360,
+                      progressBarColors: [
+                        Colors.blue.shade900,
+                        Colors.deepOrange,
+                        Colors.yellow
+                      ],
+                      trackColor: Colors.grey.shade500),
+                ),
+                min: 0,
+                max: 100,
+                onChange: (double value) {
+                  setState(
+                    () {
+                      storeStartValue(value);
+                    },
+                  );
+                },
+              )
+            ],
+          ),
+        ],
+      ),
     );
   }
 
   void storeStartValue(double value) async {
     DatabaseReference ref = FirebaseDatabase.instance.ref("LightValue");
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    setState(() {
-      ref.set(value.round());
-      prefs.setDouble('initValue', value);
-    });
+    setState(
+      () {
+        ref.set(value.round());
+        prefs.setDouble('initValue', value);
+      },
+    );
   }
 
   void playSound() async {
