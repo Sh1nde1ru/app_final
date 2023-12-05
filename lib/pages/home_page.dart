@@ -88,16 +88,18 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(children: <Widget>[
+        backgroundColor: Colors.grey.shade200,
+        body: /*Stack(children: <Widget>[
         Container(
-          height: double.infinity,
-          width: double.infinity,
-          decoration: const BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage("assets/images/background_4.jpg"),
-                  fit: BoxFit.cover)),
-        ),
-        SafeArea(
+            height: double.infinity,
+            width: double.infinity,
+            decoration: BoxDecoration(
+                gradient: LinearGradient(
+              colors: [Colors.deepPurple.shade200, Colors.deepPurple.shade400],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ))),*/
+            SafeArea(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
@@ -170,223 +172,217 @@ class _HomePageState extends State<HomePage> {
                   ),
                   Row(
                     children: [
-                      GestureDetector(
-                        onTap: () {},
-                        child: MyContainer(
-                          height: 150,
-                          width: 150,
-                          gradient: const LinearGradient(
-                              colors: [
-                                Color.fromARGB(255, 26, 239, 26),
-                                Color.fromARGB(255, 142, 233, 31),
-                              ],
-                              begin: Alignment.topLeft,
-                              end: Alignment.bottomRight),
-                          child: Center(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                const Text(
-                                  "Zapnutí: ",
-                                  style: TextStyle(
-                                      fontSize: 30,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.white),
-                                ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    SizedBox(
-                                      height: 50,
-                                      width: 50,
-                                      //čas zanptnutí hodiny
-                                      child: ListWheelScrollView.useDelegate(
-                                          controller: timeOnHours,
-                                          physics:
-                                              const FixedExtentScrollPhysics(),
-                                          itemExtent: 40,
-                                          childDelegate:
-                                              ListWheelChildLoopingListDelegate(
-                                            children: List<Widget>.generate(
-                                              24,
-                                              (index) => Text(
-                                                index < 10
-                                                    ? '0' "$index"
-                                                    : "$index",
-                                                style: const TextStyle(
-                                                    fontSize: 30,
-                                                    fontWeight: FontWeight.bold,
-                                                    color: Colors.white),
-                                              ),
+                      MyContainer(
+                        height: 150,
+                        width: 150,
+                        gradient: const LinearGradient(
+                            colors: [
+                              Color.fromARGB(255, 26, 239, 26),
+                              Color.fromARGB(255, 142, 233, 31),
+                            ],
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight),
+                        child: Center(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              const Text(
+                                "Zapnutí: ",
+                                style: TextStyle(
+                                    fontSize: 30,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white),
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  SizedBox(
+                                    height: 50,
+                                    width: 50,
+                                    //čas zanptnutí hodiny
+                                    child: ListWheelScrollView.useDelegate(
+                                        controller: timeOnHours,
+                                        physics:
+                                            const FixedExtentScrollPhysics(),
+                                        itemExtent: 40,
+                                        childDelegate:
+                                            ListWheelChildLoopingListDelegate(
+                                          children: List<Widget>.generate(
+                                            24,
+                                            (index) => Text(
+                                              index < 10
+                                                  ? '0' "$index"
+                                                  : "$index",
+                                              style: const TextStyle(
+                                                  fontSize: 30,
+                                                  fontWeight: FontWeight.bold,
+                                                  color: Colors.white),
                                             ),
                                           ),
-                                          onSelectedItemChanged: (value) {
-                                            HapticFeedback.lightImpact();
+                                        ),
+                                        onSelectedItemChanged: (value) {
+                                          HapticFeedback.lightImpact();
 
-                                            //playSound();
-                                            saveEvent1?.cancel();
-                                            saveEvent1 = Timer(
-                                                const Duration(seconds: 1),
-                                                () => storeTimeOnHours(value));
-                                          }),
+                                          //playSound();
+                                          saveEvent1?.cancel();
+                                          saveEvent1 = Timer(
+                                              const Duration(seconds: 1),
+                                              () => storeTimeOnHours(value));
+                                        }),
+                                  ),
+                                  const SizedBox(
+                                    height: 45,
+                                    child: Text(
+                                      ':',
+                                      style: TextStyle(
+                                          fontSize: 30,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.white),
                                     ),
-                                    const SizedBox(
-                                      height: 45,
-                                      child: Text(
-                                        ':',
-                                        style: TextStyle(
-                                            fontSize: 30,
-                                            fontWeight: FontWeight.bold,
-                                            color: Colors.white),
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      height: 50,
-                                      width: 50,
-                                      //čas zapnutí minuty
-                                      child: ListWheelScrollView.useDelegate(
-                                          //controller: timeOnMinutes,
-                                          itemExtent: 40,
-                                          controller: timeOnMins,
-                                          physics:
-                                              const FixedExtentScrollPhysics(),
-                                          childDelegate:
-                                              ListWheelChildLoopingListDelegate(
-                                            children: List<Widget>.generate(
-                                              60,
-                                              (index) => Text(
-                                                index < 10
-                                                    ? '0' "$index"
-                                                    : "$index",
-                                                style: const TextStyle(
-                                                    fontSize: 30,
-                                                    fontWeight: FontWeight.bold,
-                                                    color: Colors.white),
-                                              ),
+                                  ),
+                                  SizedBox(
+                                    height: 50,
+                                    width: 50,
+                                    //čas zapnutí minuty
+                                    child: ListWheelScrollView.useDelegate(
+                                        //controller: timeOnMinutes,
+                                        itemExtent: 40,
+                                        controller: timeOnMins,
+                                        physics:
+                                            const FixedExtentScrollPhysics(),
+                                        childDelegate:
+                                            ListWheelChildLoopingListDelegate(
+                                          children: List<Widget>.generate(
+                                            60,
+                                            (index) => Text(
+                                              index < 10
+                                                  ? '0' "$index"
+                                                  : "$index",
+                                              style: const TextStyle(
+                                                  fontSize: 30,
+                                                  fontWeight: FontWeight.bold,
+                                                  color: Colors.white),
                                             ),
                                           ),
-                                          onSelectedItemChanged: (value) {
-                                            HapticFeedback.lightImpact();
+                                        ),
+                                        onSelectedItemChanged: (value) {
+                                          HapticFeedback.lightImpact();
 
-                                            //playSound();
-                                            saveEvent2?.cancel();
-                                            saveEvent2 = Timer(
-                                                const Duration(seconds: 1),
-                                                () => storeTimeOnMins(value));
-                                          }),
-                                    )
-                                  ],
-                                )
-                              ],
-                            ),
+                                          //playSound();
+                                          saveEvent2?.cancel();
+                                          saveEvent2 = Timer(
+                                              const Duration(seconds: 1),
+                                              () => storeTimeOnMins(value));
+                                        }),
+                                  )
+                                ],
+                              )
+                            ],
                           ),
                         ),
                       ),
-                      GestureDetector(
-                        onTap: () {},
-                        child: MyContainer(
-                          height: 150,
-                          width: 150,
-                          gradient: const LinearGradient(colors: [
-                            Color.fromARGB(255, 239, 33, 26),
-                            Color.fromARGB(255, 239, 86, 26),
-                          ]),
-                          child: Center(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                const Text(
-                                  "Vypnutí: ",
-                                  style: TextStyle(
-                                      fontSize: 30,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.white),
-                                ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    SizedBox(
-                                      height: 50,
-                                      width: 50,
-                                      child: ListWheelScrollView.useDelegate(
-                                          controller: timeOffHours,
-                                          //controller: timeOffHours,
-                                          physics:
-                                              const FixedExtentScrollPhysics(),
-                                          itemExtent: 40,
-                                          childDelegate:
-                                              ListWheelChildLoopingListDelegate(
-                                            children: List<Widget>.generate(
-                                              24,
-                                              (index) => Text(
-                                                index < 10
-                                                    ? '0' "$index"
-                                                    : "$index",
-                                                style: const TextStyle(
-                                                    fontSize: 30,
-                                                    fontWeight: FontWeight.bold,
-                                                    color: Colors.white),
-                                              ),
+                      MyContainer(
+                        height: 150,
+                        width: 150,
+                        gradient: const LinearGradient(colors: [
+                          Color.fromARGB(255, 239, 33, 26),
+                          Color.fromARGB(255, 239, 86, 26),
+                        ]),
+                        child: Center(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              const Text(
+                                "Vypnutí: ",
+                                style: TextStyle(
+                                    fontSize: 30,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white),
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  SizedBox(
+                                    height: 50,
+                                    width: 50,
+                                    child: ListWheelScrollView.useDelegate(
+                                        controller: timeOffHours,
+                                        //controller: timeOffHours,
+                                        physics:
+                                            const FixedExtentScrollPhysics(),
+                                        itemExtent: 40,
+                                        childDelegate:
+                                            ListWheelChildLoopingListDelegate(
+                                          children: List<Widget>.generate(
+                                            24,
+                                            (index) => Text(
+                                              index < 10
+                                                  ? '0' "$index"
+                                                  : "$index",
+                                              style: const TextStyle(
+                                                  fontSize: 30,
+                                                  fontWeight: FontWeight.bold,
+                                                  color: Colors.white),
                                             ),
                                           ),
-                                          onSelectedItemChanged: (value) {
-                                            HapticFeedback.lightImpact();
+                                        ),
+                                        onSelectedItemChanged: (value) {
+                                          HapticFeedback.lightImpact();
 
-                                            //playSound();
-                                            saveEvent3?.cancel();
-                                            saveEvent3 = Timer(
-                                                const Duration(seconds: 1),
-                                                () => storeTimeOffHours(value));
-                                          }),
+                                          //playSound();
+                                          saveEvent3?.cancel();
+                                          saveEvent3 = Timer(
+                                              const Duration(seconds: 1),
+                                              () => storeTimeOffHours(value));
+                                        }),
+                                  ),
+                                  const SizedBox(
+                                    height: 45,
+                                    child: Text(
+                                      ':',
+                                      style: TextStyle(
+                                          fontSize: 30,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.white),
                                     ),
-                                    const SizedBox(
-                                      height: 45,
-                                      child: Text(
-                                        ':',
-                                        style: TextStyle(
-                                            fontSize: 30,
-                                            fontWeight: FontWeight.bold,
-                                            color: Colors.white),
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      height: 50,
-                                      width: 50,
-                                      child: ListWheelScrollView.useDelegate(
-                                          controller: timeOffMins,
-                                          itemExtent: 40,
-                                          physics:
-                                              const FixedExtentScrollPhysics(),
-                                          childDelegate:
-                                              ListWheelChildLoopingListDelegate(
-                                            children: List<Widget>.generate(
-                                              60,
-                                              (index) => Text(
-                                                index < 10
-                                                    ? '0' "$index"
-                                                    : "$index",
-                                                style: const TextStyle(
-                                                    fontSize: 30,
-                                                    fontWeight: FontWeight.bold,
-                                                    color: Colors.white),
-                                              ),
+                                  ),
+                                  SizedBox(
+                                    height: 50,
+                                    width: 50,
+                                    child: ListWheelScrollView.useDelegate(
+                                        controller: timeOffMins,
+                                        itemExtent: 40,
+                                        physics:
+                                            const FixedExtentScrollPhysics(),
+                                        childDelegate:
+                                            ListWheelChildLoopingListDelegate(
+                                          children: List<Widget>.generate(
+                                            60,
+                                            (index) => Text(
+                                              index < 10
+                                                  ? '0' "$index"
+                                                  : "$index",
+                                              style: const TextStyle(
+                                                  fontSize: 30,
+                                                  fontWeight: FontWeight.bold,
+                                                  color: Colors.white),
                                             ),
                                           ),
-                                          onSelectedItemChanged: (value) {
-                                            HapticFeedback.lightImpact();
+                                        ),
+                                        onSelectedItemChanged: (value) {
+                                          HapticFeedback.lightImpact();
 
-                                            //playSound();
-                                            // storeTimeOffMins(value);
-                                            saveEvent4?.cancel();
-                                            saveEvent4 = Timer(
-                                                const Duration(seconds: 1),
-                                                () => storeTimeOffMins(value));
-                                          }),
-                                    )
-                                  ],
-                                )
-                              ],
-                            ),
+                                          //playSound();
+                                          // storeTimeOffMins(value);
+                                          saveEvent4?.cancel();
+                                          saveEvent4 = Timer(
+                                              const Duration(seconds: 1),
+                                              () => storeTimeOffMins(value));
+                                        }),
+                                  )
+                                ],
+                              )
+                            ],
                           ),
                         ),
                       )
@@ -428,9 +424,9 @@ class _HomePageState extends State<HomePage> {
               ),
             ],
           ),
-        ),
-      ]),
-    );
+        ));
+    // ]),
+    //  )
   }
 
   void storeStartValue(double value) async {
