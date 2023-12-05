@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 
 class MyContainer extends StatelessWidget {
-  const MyContainer(
-      {super.key,
-      required this.child,
-      required this.height,
-      required this.width,
-      required this.gradient});
+  const MyContainer({
+    super.key,
+    required this.child,
+    required this.height,
+    required this.width,
+  });
   final child;
   final double height;
   final double width;
-  final gradient;
 
   @override
   Widget build(BuildContext context) {
@@ -20,17 +19,16 @@ class MyContainer extends StatelessWidget {
           height: height,
           width: width,
           decoration: BoxDecoration(
-            gradient: gradient,
-            //color: color,
+            color: Colors.deepPurple.shade200,
             borderRadius: BorderRadius.circular(12),
-            boxShadow: [
+            /*boxShadow: [
               BoxShadow(
                   color: Colors.grey.shade500,
                   blurRadius: 15,
                   offset: const Offset(5, 5)),
               const BoxShadow(
                   color: Colors.white, blurRadius: 15, offset: Offset(-5, -5))
-            ],
+            ],*/
           ),
           child: Center(
             child: child,

@@ -88,7 +88,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.grey.shade200,
+        backgroundColor: Colors.deepPurple.shade400,
         body: /*Stack(children: <Widget>[
         Container(
             height: double.infinity,
@@ -111,13 +111,6 @@ class _HomePageState extends State<HomePage> {
                       MyContainer(
                         height: 150,
                         width: 150,
-                        gradient: const LinearGradient(
-                            colors: [
-                              Color.fromARGB(255, 255, 121, 4),
-                              Color.fromARGB(241, 255, 247, 0),
-                            ],
-                            begin: Alignment.topLeft,
-                            end: Alignment.bottomRight),
                         child: Center(
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -141,13 +134,6 @@ class _HomePageState extends State<HomePage> {
                       MyContainer(
                         height: 150,
                         width: 150,
-                        gradient: const LinearGradient(
-                            colors: [
-                              Color.fromARGB(255, 4, 50, 255),
-                              Color.fromARGB(240, 0, 213, 255),
-                            ],
-                            begin: Alignment.topLeft,
-                            end: Alignment.bottomRight),
                         child: Center(
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -175,13 +161,6 @@ class _HomePageState extends State<HomePage> {
                       MyContainer(
                         height: 150,
                         width: 150,
-                        gradient: const LinearGradient(
-                            colors: [
-                              Color.fromARGB(255, 26, 239, 26),
-                              Color.fromARGB(255, 142, 233, 31),
-                            ],
-                            begin: Alignment.topLeft,
-                            end: Alignment.bottomRight),
                         child: Center(
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -284,10 +263,6 @@ class _HomePageState extends State<HomePage> {
                       MyContainer(
                         height: 150,
                         width: 150,
-                        gradient: const LinearGradient(colors: [
-                          Color.fromARGB(255, 239, 33, 26),
-                          Color.fromARGB(255, 239, 86, 26),
-                        ]),
                         child: Center(
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -394,23 +369,22 @@ class _HomePageState extends State<HomePage> {
                   SleekCircularSlider(
                     initialValue: initValue,
                     appearance: CircularSliderAppearance(
+                      infoProperties: InfoProperties(
+                          mainLabelStyle: const TextStyle(
+                              color: Colors.white, fontSize: 70)),
                       size: 300,
                       startAngle: 180,
                       angleRange: 180,
                       customWidths: CustomSliderWidths(
-                        trackWidth: 50,
-                        shadowWidth: 0,
+                        handlerSize: 15,
+                        trackWidth: 5,
+                        shadowWidth: 30,
                         progressBarWidth: 50,
                       ),
                       customColors: CustomSliderColors(
-                          gradientStartAngle: 180,
-                          gradientEndAngle: 360,
-                          progressBarColors: [
-                            Colors.blue.shade900,
-                            Colors.deepOrange,
-                            Colors.yellow
-                          ],
-                          trackColor: Colors.grey.shade500),
+                          progressBarColor: Colors.deepPurple.shade200,
+                          dotColor: Colors.white,
+                          trackColor: Colors.grey.shade300),
                     ),
                     min: 0,
                     max: 100,
