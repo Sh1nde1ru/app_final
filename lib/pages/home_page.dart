@@ -88,18 +88,21 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.deepPurple.shade400,
-        body: /*Stack(children: <Widget>[
+      // backgroundColor: Colors.cyan.shade600,
+      body: Stack(children: <Widget>[
         Container(
             height: double.infinity,
             width: double.infinity,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
                 gradient: LinearGradient(
-              colors: [Colors.deepPurple.shade200, Colors.deepPurple.shade400],
+              colors: [
+                Colors.lightBlue,
+                Colors.lightGreen,
+              ],
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
-            ))),*/
-            SafeArea(
+            ))),
+        SafeArea(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
@@ -120,12 +123,12 @@ class _HomePageState extends State<HomePage> {
                                 style: TextStyle(
                                     fontSize: 30,
                                     fontWeight: FontWeight.bold,
-                                    color: Colors.white),
+                                    color: Colors.black),
                               ),
                               Text(
                                 "$temperature°C",
                                 style: const TextStyle(
-                                    fontSize: 40, color: Colors.white),
+                                    fontSize: 40, color: Colors.black),
                               ),
                             ],
                           ),
@@ -143,12 +146,12 @@ class _HomePageState extends State<HomePage> {
                                 style: TextStyle(
                                     fontSize: 30,
                                     fontWeight: FontWeight.bold,
-                                    color: Colors.white),
+                                    color: Colors.black),
                               ),
                               Text(
                                 "$outputHum%",
                                 style: const TextStyle(
-                                    fontSize: 40, color: Colors.white),
+                                    fontSize: 40, color: Colors.black),
                               ),
                             ],
                           ),
@@ -170,7 +173,7 @@ class _HomePageState extends State<HomePage> {
                                 style: TextStyle(
                                     fontSize: 30,
                                     fontWeight: FontWeight.bold,
-                                    color: Colors.white),
+                                    color: Colors.black),
                               ),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -195,7 +198,7 @@ class _HomePageState extends State<HomePage> {
                                               style: const TextStyle(
                                                   fontSize: 30,
                                                   fontWeight: FontWeight.bold,
-                                                  color: Colors.white),
+                                                  color: Colors.black),
                                             ),
                                           ),
                                         ),
@@ -216,7 +219,7 @@ class _HomePageState extends State<HomePage> {
                                       style: TextStyle(
                                           fontSize: 30,
                                           fontWeight: FontWeight.bold,
-                                          color: Colors.white),
+                                          color: Colors.black),
                                     ),
                                   ),
                                   SizedBox(
@@ -240,7 +243,7 @@ class _HomePageState extends State<HomePage> {
                                               style: const TextStyle(
                                                   fontSize: 30,
                                                   fontWeight: FontWeight.bold,
-                                                  color: Colors.white),
+                                                  color: Colors.black),
                                             ),
                                           ),
                                         ),
@@ -272,7 +275,7 @@ class _HomePageState extends State<HomePage> {
                                 style: TextStyle(
                                     fontSize: 30,
                                     fontWeight: FontWeight.bold,
-                                    color: Colors.white),
+                                    color: Colors.black),
                               ),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -297,7 +300,7 @@ class _HomePageState extends State<HomePage> {
                                               style: const TextStyle(
                                                   fontSize: 30,
                                                   fontWeight: FontWeight.bold,
-                                                  color: Colors.white),
+                                                  color: Colors.black),
                                             ),
                                           ),
                                         ),
@@ -318,7 +321,7 @@ class _HomePageState extends State<HomePage> {
                                       style: TextStyle(
                                           fontSize: 30,
                                           fontWeight: FontWeight.bold,
-                                          color: Colors.white),
+                                          color: Colors.black),
                                     ),
                                   ),
                                   SizedBox(
@@ -340,7 +343,7 @@ class _HomePageState extends State<HomePage> {
                                               style: const TextStyle(
                                                   fontSize: 30,
                                                   fontWeight: FontWeight.bold,
-                                                  color: Colors.white),
+                                                  color: Colors.black),
                                             ),
                                           ),
                                         ),
@@ -371,7 +374,7 @@ class _HomePageState extends State<HomePage> {
                     appearance: CircularSliderAppearance(
                       infoProperties: InfoProperties(
                           mainLabelStyle: const TextStyle(
-                              color: Colors.white, fontSize: 70)),
+                              color: Colors.black, fontSize: 70)),
                       size: 300,
                       startAngle: 180,
                       angleRange: 180,
@@ -382,7 +385,7 @@ class _HomePageState extends State<HomePage> {
                         progressBarWidth: 50,
                       ),
                       customColors: CustomSliderColors(
-                          progressBarColor: Colors.deepPurple.shade200,
+                          progressBarColor: Colors.cyan.shade200,
                           dotColor: Colors.white,
                           trackColor: Colors.grey.shade300),
                     ),
@@ -398,9 +401,9 @@ class _HomePageState extends State<HomePage> {
               ),
             ],
           ),
-        ));
-    // ]),
-    //  )
+        )
+      ]),
+    );
   }
 
   void storeStartValue(double value) async {

@@ -12,11 +12,21 @@ dependencies:
     firebase_database: ^10.3.6
     flutter:
         sdk: flutter
+    flutter_native_splash: ^2.3.6
     interactive_slider: ^0.2.1
     molten_navigationbar_flutter: ^1.0.1
     shared_preferences: ^2.2.2
     sleek_circular_slider: ^2.0.1
     slider_controller: ^0.0.5
+
+flutter_native_splash:
+    color: '#00cccc'
+    image: 'assets/images/splash_logo.png'
+    background_image: 'assets/images/background_2.jpg'
+    android_12:
+        image: 'assets/images/splash_logo.png'
+    android: true
+    ios: true
 
 dev_dependencies:
     flutter_test:

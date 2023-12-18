@@ -19,16 +19,15 @@ class MyContainer extends StatelessWidget {
           height: height,
           width: width,
           decoration: BoxDecoration(
-            color: Colors.deepPurple.shade200,
+            color: Colors.cyan.shade200,
             borderRadius: BorderRadius.circular(12),
-            /*boxShadow: [
+            boxShadow: [
               BoxShadow(
-                  color: Colors.grey.shade500,
-                  blurRadius: 15,
-                  offset: const Offset(5, 5)),
-              const BoxShadow(
-                  color: Colors.white, blurRadius: 15, offset: Offset(-5, -5))
-            ],*/
+                  color: Colors.grey.shade300,
+                  blurRadius: 12,
+                  spreadRadius: 0.5,
+                  blurStyle: BlurStyle.outer)
+            ],
           ),
           child: Center(
             child: child,
